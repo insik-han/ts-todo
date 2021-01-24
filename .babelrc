@@ -1,0 +1,38 @@
+{
+  "presets": [
+    [
+      "@babel/env",
+      {
+        "targets": {
+          "node": "current"
+        }
+      }
+    ],
+    "@babel/typescript",
+    "next/babel"
+  ],
+  "plugins": [
+    "inline-react-svg",
+    [
+      "module-resolver",
+      {
+        "extensions": [
+          ".ts"
+        ],
+        "root": [
+          "."
+        ]
+      }
+    ],
+    [
+      "styled-components",
+      {
+        "ssr": true
+      }
+    ]
+  ],
+  "comments": false,
+  "ignore": [
+    "./src/__tests__"
+  ]
+}

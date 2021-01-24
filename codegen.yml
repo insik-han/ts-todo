@@ -1,0 +1,6 @@
+schema: 스키마 링크 추가하셈
+generates:
+  ./src/types.tsx:
+    plugins:
+      - typescript
+    
