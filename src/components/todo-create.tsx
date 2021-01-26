@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import { MdAdd } from 'react-icons/md';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { useTodoDispatch, useTodoNextId } from '../context/todo-context';
 
 interface ICircleProps {
   open: boolean;
@@ -36,7 +37,7 @@ const CircleButton = styled.button<ICircleProps>`
   justify-content: center;
 
   transition: 0.125s all ease-in;
-  ${props =>
+  ${(props) =>
     props.open &&
     css`
       background: #ff6b6b;
@@ -52,10 +53,10 @@ const CircleButton = styled.button<ICircleProps>`
 
 const TodoCreateContainer = styled.div`
   .input-form-container {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     .input-form {
       background-color: #f8f9fa;
       padding: 32px 32px 72px 32px;
@@ -77,15 +78,40 @@ const TodoCreateContainer = styled.div`
 
 const TodoCreate = () => {
   const [open, setOpen] = useState(false);
+  const [value, setValue] = useState('');
+  const dispatch = useTodoDispatch();
+  const nextId = useTodoNextId();
   const onToggle = () => setOpen(!open);
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setValue(e.target.value);
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (value !== '') {
+      dispatch({
+        type: 'CREATE',
+        todo: {
+          id: nextId.current,
+          text: value,
+          done: false,
+        },
+      });
+      setValue('');
+      setOpen(false);
+      nextId.current += 1;
+    }
+  };
   return (
     <>
       {open && (
         <TodoCreateContainer>
-          <div className='input-form-container'>
-            <div className='input-form'>
-              <input placeholder="할 일을 입력 후, Enter를 누르세요" />
-            </div>
+          <div className="input-form-container">
+            <form className="input-form" onSubmit={onSubmit}>
+              <input
+                placeholder="할 일을 입력 후, Enter를 누르세요"
+                onChange={onChange}
+                value={value ?? ''}
+              />
+            </form>
           </div>
         </TodoCreateContainer>
       )}
@@ -93,7 +119,7 @@ const TodoCreate = () => {
         <MdAdd />
       </CircleButton>
     </>
-  )
-}
+  );
+};
 
-export default TodoCreate
+export default React.memo(TodoCreate);

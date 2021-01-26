@@ -1,9 +1,12 @@
 import styled, { css } from 'styled-components';
 import { MdDone, MdDelete } from 'react-icons/md';
+import { useTodoDispatch } from '../context/todo-context';
+import React from 'react';
 
 interface ITodoListItem {
   text: string;
   done: boolean;
+  id: number;
 }
 
 interface IProps {
@@ -31,19 +34,22 @@ const TodoListItemContainer = styled.div<IProps>`
     justify-content: center;
     margin-right: 20px;
     cursor: pointer;
-    ${props => props.done && css`
-      border: 1px solid #38d9a9; 
-      color: #38d9a9;`
-    }
+    ${(props) =>
+      props.done &&
+      css`
+        border: 1px solid #38d9a9;
+        color: #38d9a9;
+      `}
   }
   span {
     flex: 1;
     font-size: 21px;
     color: #495057;
-    ${props =>
+    ${(props) =>
       props.done &&
-      css`color: #ced4da;`
-    }
+      css`
+        color: #ced4da;
+      `}
   }
   .remove {
     color: #dee2e6;
@@ -56,14 +62,21 @@ const TodoListItemContainer = styled.div<IProps>`
   }
 `;
 
-const TodoListItem = ({ text, done }: ITodoListItem) => {
+const TodoListItem = ({ text, done, id }: ITodoListItem) => {
+  const dispatch = useTodoDispatch();
+  const onToggle = () => dispatch({ type: 'TOGGLE', id });
+  const onRemove = () => dispatch({ type: 'REMOVE', id });
   return (
     <TodoListItemContainer done={done}>
-      <div className='checkbox'>{done && <MdDone />}</div>
+      <div className="checkbox" onClick={onToggle}>
+        {done && <MdDone />}
+      </div>
       <span>{text}</span>
-      <div className="remove"><MdDelete /></div>
+      <div className="remove" onClick={onRemove}>
+        <MdDelete />
+      </div>
     </TodoListItemContainer>
-  )
-}
+  );
+};
 
-export default TodoListItem
+export default React.memo(TodoListItem);

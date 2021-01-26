@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { useTodoState } from '../context/todo-context';
 import TodoListItem from './todo-list-item';
 
 const TodoListContainer = styled.div`
@@ -7,29 +8,11 @@ const TodoListContainer = styled.div`
   overflow-y: auto;
 `;
 
-const todoItems = [
-  {
-    text: '프로젝트 생성하기',
-    done: true,
-  },
-  {
-    text: '컴포넌트 스타일링 하기',
-    done: true,
-  },
-  {
-    text: 'Context 만들기',
-    done: false,
-  },
-  {
-    text: '기능 구현하기',
-    done: false,
-  },
-];
-
 const TodoList = () => {
+  const todos = useTodoState();
   return (
     <TodoListContainer>
-      {todoItems.map((v, i) => <TodoListItem key={i} text={v.text} done={v.done}/>)}
+      {todos.map((v: any, i: number) => <TodoListItem key={i} id={v.id} text={v.text} done={v.done}/>)}
     </TodoListContainer>
   )
 }
