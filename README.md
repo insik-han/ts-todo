@@ -1,1 +1,1 @@
-typescript nextjs apollo 포맷
+# https://d3i5tx32dlejd7.cloudfront.net/
