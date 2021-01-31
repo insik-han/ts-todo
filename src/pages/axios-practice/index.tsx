@@ -35,7 +35,7 @@ const ApiTest = ({ data, error }: { data: any; error: any }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const fetchData = async () =>
     await axios
       .get('https://jsonplaceholder.typicode.com/users')

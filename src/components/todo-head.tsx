@@ -48,7 +48,7 @@ const TodoHead = () => {
       <div className="day">{dayName}</div>
       <div className="tasks-left">할 일 {undoneTasks.length}개 남음</div>
       <br />
-      <a onClick={() => router.push('/api-test')}>api 테스트</a>
+      <a onClick={() => router.push('/axios-practice')}>api 테스트</a>
     </TodoHeadContainer>
   );
 };
