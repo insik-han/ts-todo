@@ -1,0 +1,17 @@
+{
+  "name": "ts-todo-image-lambda",
+  "hash": "gyPgEipUax1a+4az4ZBS0oaSsrAke4KvilEBosJQKi0=",
+  "description": "Image Lambda@Edge for Next CloudFront distribution",
+  "memory": 512,
+  "timeout": 10,
+  "code": "D:\\workspace\\react\\ts-todo\\.serverless_nextjs\\image-lambda",
+  "shims": [],
+  "handler": "index.handler",
+  "runtime": "nodejs12.x",
+  "env": {},
+  "role": {
+    "arn": "arn:aws:iam::742429871055:role/awpxd3q-rzrf4h"
+  },
+  "arn": "arn:aws:lambda:us-east-1:742429871055:function:ts-todo-image-lambda",
+  "region": "us-east-1"
+}

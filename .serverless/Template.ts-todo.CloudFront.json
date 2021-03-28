@@ -1,0 +1,74 @@
+{
+  "id": "E1C69O905635KZ",
+  "arn": "arn:aws:cloudfront::742429871055:distribution/E1C69O905635KZ",
+  "url": "https://d3aaii99dvyybd.cloudfront.net",
+  "region": "us-east-1",
+  "enabled": true,
+  "comment": "",
+  "priceClass": "PriceClass_All",
+  "origins": [
+    {
+      "url": "http://ts-todo.s3.ap-northeast-2.amazonaws.com",
+      "private": true,
+      "pathPatterns": {
+        "_next/static/*": {
+          "minTTL": 0,
+          "defaultTTL": 86400,
+          "maxTTL": 31536000,
+          "forward": {
+            "headers": "none",
+            "cookies": "none",
+            "queryString": false
+          }
+        },
+        "static/*": {
+          "minTTL": 0,
+          "defaultTTL": 86400,
+          "maxTTL": 31536000,
+          "forward": {
+            "headers": "none",
+            "cookies": "none",
+            "queryString": false
+          }
+        },
+        "_next/data/*": {
+          "minTTL": 0,
+          "defaultTTL": 0,
+          "maxTTL": 31536000,
+          "allowedHttpMethods": [
+            "HEAD",
+            "GET"
+          ],
+          "lambda@edge": {
+            "origin-response": "arn:aws:lambda:us-east-1:742429871055:function:ts-todo-default-lambda:14",
+            "origin-request": "arn:aws:lambda:us-east-1:742429871055:function:ts-todo-default-lambda:14"
+          }
+        }
+      }
+    }
+  ],
+  "errorPages": [],
+  "defaults": {
+    "minTTL": 0,
+    "defaultTTL": 0,
+    "maxTTL": 31536000,
+    "forward": {
+      "cookies": "all",
+      "queryString": true
+    },
+    "allowedHttpMethods": [
+      "HEAD",
+      "DELETE",
+      "POST",
+      "GET",
+      "OPTIONS",
+      "PUT",
+      "PATCH"
+    ],
+    "lambda@edge": {
+      "origin-request": "arn:aws:lambda:us-east-1:742429871055:function:ts-todo-default-lambda:14",
+      "origin-response": "arn:aws:lambda:us-east-1:742429871055:function:ts-todo-default-lambda:14"
+    },
+    "compress": true
+  }
+}

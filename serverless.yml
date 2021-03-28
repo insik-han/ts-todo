@@ -1,7 +1,12 @@
 ts-todo:
-  component: '@sls-next/serverless-component'
+  component: "@sls-next/serverless-component@1.18.0"
   inputs:
+  # roleArn: "arn:aws:iam::742429871055:role/itez-serverless-role"
     bucketName: 'ts-todo'
     bucketRegion: 'ap-northeast-2'
     cloudfront:
-      distributionId: E2AT5J64EL8IR6
+      distributionId: E1C69O905635KZ
+    name:
+      defaultLambda: "ts-todo-default-lambda"
+      apiLambda: "ts-todo-api-lambda"
+      imageLambda: "ts-todo-image-lambda"

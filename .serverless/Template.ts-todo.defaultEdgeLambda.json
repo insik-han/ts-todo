@@ -1,0 +1,17 @@
+{
+  "name": "ts-todo-default-lambda",
+  "hash": "K+Qr5SZMErLhoethkkh14SwG2yl/H9+Ai7AOHrmPkM4=",
+  "description": "Default Lambda@Edge for Next CloudFront distribution",
+  "memory": 512,
+  "timeout": 10,
+  "code": "D:\\workspace\\react\\ts-todo\\.serverless_nextjs\\default-lambda",
+  "shims": [],
+  "handler": "index.handler",
+  "runtime": "nodejs12.x",
+  "env": {},
+  "role": {
+    "arn": "arn:aws:iam::742429871055:role/awpxd3q-nd58qth"
+  },
+  "arn": "arn:aws:lambda:us-east-1:742429871055:function:ts-todo-default-lambda",
+  "region": "us-east-1"
+}

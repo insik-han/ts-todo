@@ -1,0 +1,6 @@
+{
+  "name": "ts-todo",
+  "region": "ap-northeast-2",
+  "accelerated": true,
+  "url": "https://ts-todo.s3.amazonaws.com"
+}
